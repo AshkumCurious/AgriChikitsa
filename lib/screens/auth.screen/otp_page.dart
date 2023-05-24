@@ -51,6 +51,7 @@ class _OTPPageState extends State<OTPPage> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(140.0),
         child: AppBar(
+          backgroundColor: Color(0xFFE4EFE7),
           title: Text('OTP Verification'),
         ),
       ),

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:jobchecklist/screens/auth.screen/otp_page.dart';
@@ -10,9 +12,36 @@ class LogInPage extends StatefulWidget {
 }
 
 class _LogInPageState extends State<LogInPage> {
-  bool? isChecked = false;
+  bool? isChecked = true;
   TextEditingController controller = TextEditingController();
   var phone="";
+  bool continuebutton=false;
+  Color _containerColor = Colors.grey; // Initial color
+
+  void changeColor(bool b) {
+    setState(() {
+      if(b==true)
+       _containerColor = Colors.green;
+      else if(b==false)
+        _containerColor = Colors.grey;
+    });
+  }
+  validateMobile(String value) {
+    String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+    RegExp regExp = new RegExp(pattern);
+    if (value.length == 0) {
+      print('Please enter mobile number');
+    }
+    else if (!regExp.hasMatch(value)) {
+      print('Please enter valid mobile number');
+      bool continuebutton = false;
+      changeColor(continuebutton);
+    }
+      else {
+      bool continuebutton = true;
+      changeColor(continuebutton);
+    }
+    }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,12 +50,16 @@ class _LogInPageState extends State<LogInPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset(''),
+              SizedBox(height: 10.0,),
+              Image.asset('assets/images/img_1.png',
+                height: 100.0,
+                width: 100.0,
+              ),
               Container(
                 padding: EdgeInsets.symmetric(vertical: 55.0, horizontal: 23.0),
                 width: double.infinity,
                 height: 350.0,
-                color: Colors.lightGreen.shade50,
+                color: Color(0xFFE4EFE7),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -56,10 +89,11 @@ class _LogInPageState extends State<LogInPage> {
                       child: TextField(
                         onChanged: (value){
                           phone=value;
+                          validateMobile(phone);
                         },
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
-                          prefixText: '+91',
+                         labelText: '+91',
                           hintStyle: TextStyle(
                             color: Colors.black,
                           ),
@@ -89,7 +123,7 @@ class _LogInPageState extends State<LogInPage> {
                           height: 50.0,
                           width: 365.0,
                           decoration: BoxDecoration(
-                            color: Colors.lightGreen.shade700,
+                            color: _containerColor,
                             borderRadius:
                                 BorderRadius.all(Radius.circular(3.0)),
                           ),

@@ -14,12 +14,16 @@ class SignInScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset(''),
+              SizedBox(height: 10.0,),
+              Image.asset('assets/images/img_1.png',
+                height: 100.0,
+                width: 100.0,
+              ),
               Container(
                 padding: EdgeInsets.symmetric(vertical: 55.0,horizontal: 23.0),
                 width: double.infinity,
                 height: 260.0,
-                color: Colors.lightGreen.shade50,
+                color: Color(0xFFE4EFE7),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:jobchecklist/screens/auth.screen/otp_page.dart';
 import 'package:jobchecklist/screens/auth.screen/signin.dart';
 import 'package:provider/provider.dart';
 import 'routes/routes.dart';
@@ -34,7 +35,7 @@ class App extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
        // routes: Routes().routes,
-        home: SignInScreen(),
+        home: OTPPage(),
       ),
     );
   }
